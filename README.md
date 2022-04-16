@@ -45,6 +45,18 @@ public interface Iterator {
 
 
 
+举例：
+
+集合的遍历
+
+Collection，Iterator，ListIterator，ArrayList，Itr，ListItr
+
+详细见 processOn 图解：
+
+```
+https://www.processon.com/view/link/625ad6350e3e7410dc7b84e1
+```
+
 
 
 
