@@ -48,7 +48,7 @@
 
 
 
-## Iterator 设计模式
+## Iterator（迭代器） 模式
 
 ​	将循环变量的作用抽象化、通用化后形成的模式，称为 **`Iterator（迭代器）`** 模式
 
@@ -73,43 +73,81 @@ Collection，Iterator，ListIterator，ArrayList，Itr，ListItr
 详细见 processOn 图解：
 
 ```
-https://www.processon.com/view/link/625ad6350e3e7410dc7b84e1
+https://www.processon.com/view/625834141e085335d545674a
 ```
 
 
 
 ## Adapter（适配器）模式
 
-​	经常会存在现有的程序无法直接使用，需要做出适当的变换之后才能使用的情况，这种用于填补 “现有程序” 和 “所需程序” 之间的差异的设计模式，就是 Adapter（适配器） 模式
-
-​	适配器模式分为两种：
-
-*   类适配器模式（使用继承的适配器）
-*   对象适配器模式（使用委托的适配器）
-
-
-
-### 类适配器模式
-
-​	由于
+​	将两个不适配的东西，通过适配器连接起来，达成要求。
 
 ```java
-
+public class Adapter extends 被适配的目标A implements 要求做到的B {
+  	@override
+  	public void 要求做到的B的方法() {
+    	被适配目标的A调用A的方法
+  	}
+}
 ```
 
 举例：
 
-Iphone 的有线耳机线是扁头的，但是有些手机的耳机线是圆头的，如果想要将圆头的耳机线插入扁头的耳机线，就需要一个转换器进行转换
+扁耳机空，扁头耳机线，圆头耳机线
 
- 
+详细见 processOn 图解：
 
-
-
-
-
-
+```
+https://www.processon.com/view/625834141e085335d545674a
+```
 
 
+
+### Template Method（模板方法）模式
+
+​	在父类中定义具体的处理流程，而在子类中进行实现具体的处理方法，即：父类只负责调用方法的顺序，子类负责调用方法的实现，即便父类调用方法的顺序是一样的，但由于子类实现的不同，也会产生不同的结果
+
+```java
+// 父类中的模板方法定义调用方法的流程
+public abstract class Template {
+  	// 其他类不需要知道这几个方法，并且只有子类实现，那么就可以将修饰符设置为 protected
+  	protected abstract void method1();
+  	protected abstract void method2();
+  	protected abstract void method3();
+  	// 定义调用流程，由于不需要子类继承和实现，所以可以用 final 修饰
+    public final void templateMethod() {
+		method1();
+      	method2();
+      	method3();
+    }
+}
+
+// 子类负责方法的具体实现
+public class T extends Template {
+    public abstract void method1() {
+		// 具体实现
+    }
+    public abstract void method2() {
+		// 具体实现
+    }  
+    public abstract void method3() {
+		// 具体实现
+    }
+}
+
+```
+
+
+
+举例：
+
+手机模型
+
+详细见 processOn 图解：
+
+```
+https://www.processon.com/view/625834141e085335d545674a
+```
 
 
 
