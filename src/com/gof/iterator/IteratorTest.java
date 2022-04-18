@@ -34,7 +34,7 @@ public class IteratorTest {
 
         @Override
         public Object next() {
-            return carParking.getCar()[index++].getCarName();
+            return carParking.getCar()[index++];
         }
     }
 
@@ -94,7 +94,8 @@ public class IteratorTest {
         MyIterator myIterator = carParking.getIterator();
         System.out.println(myIterator.hasNext());
         while (myIterator.hasNext()) {
-            System.out.print(myIterator.next() + " ");
+            Car c = (Car) myIterator.next();
+            System.out.print(c.getCarName() + " ");
         }
         System.out.println();
 
