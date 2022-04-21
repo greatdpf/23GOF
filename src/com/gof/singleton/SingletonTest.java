@@ -37,6 +37,22 @@ class LazySingleton {
     }
 }
 
+/**
+ * 静态内部类式：立即加载
+ */
+class StaticSingleton {
+    public static class Singleton {
+        private static StaticSingleton staticSingleton = new StaticSingleton();
+    }
+    private StaticSingleton() {
+
+    }
+
+    public static StaticSingleton getInstance() {
+        return Singleton.staticSingleton;
+    }
+}
+
 class SingletonTest {
     public static void main(String[] args) {
         // 测试，如果懒汉式不加同步会发生什么，导致创建的对象不唯一
@@ -55,5 +71,7 @@ class SingletonTest {
         thread3.start();
         Thread thread4 = new Thread(runnable);
         thread4.start();
+        System.out.println(StaticSingleton.getInstance());
+        System.out.println(StaticSingleton.getInstance());
     }
 }
